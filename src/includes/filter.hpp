@@ -10,9 +10,10 @@ class Filter {
   protected:
     vector<shared_ptr<Stream<T>>> inputs;
     shared_ptr<Stream<T>> output;
+    void init();
   
   public:
     Filter(vector<shared_ptr<Stream<T>>>& inputs);
     virtual void calc() = 0;
-    Stream<T>& getOutStream();
+    shared_ptr<Stream<T>> getOutStream();
 };
