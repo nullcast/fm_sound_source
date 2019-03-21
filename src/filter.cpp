@@ -2,21 +2,18 @@
 #include "includes/quantization.hpp"
 
 template<typename T>
-Filter<T>::Filter(vector<shared_ptr<Stream<T>>>& inputs):inputs(inputs.size()), output(new Stream<T>(1UL)) {
-  init();
+Filter<T>::Filter(size_t inputs_size):inputs(inputs_size) {}
+
+template<typename T>
+shared_ptr<vector<shared_ptr<Stream<T>>>> Filter<T>::getOutStreams() {
+  return this->outputs;
 }
 
 template<typename T>
-void Filter<T>::init() {
-  for(int i=0; i<inputs.size(); i++) {
-    this->inputs[i] = inputs[i];
-  }
+vector<shared_ptr<Stream<T>>>& Filter<T>::getInStreams() {
+  return this->inputs;
 }
 
-template<typename T>
-shared_ptr<Stream<T>> Filter<T>::getOutStream() {
-  return this->output;
-}
-
-template Filter<BIT_8>::Filter(vector<shared_ptr<Stream<BIT_8>>>& inputs);
-template shared_ptr<Stream<BIT_8>> Filter<BIT_8>::getOutStream();
+template Filter<BIT_8>::Filter(size_t inputs_size);
+template shared_ptr<vector<shared_ptr<Stream<BIT_8>>>> Filter<BIT_8>::getOutStreams();
+template vector<shared_ptr<Stream<BIT_8>>>& Filter<BIT_8>::getInStreams();

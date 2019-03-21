@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstddef>
 #include <vector>
 #include <memory>
@@ -9,11 +11,11 @@ template<typename T>
 class Filter {
   protected:
     vector<shared_ptr<Stream<T>>> inputs;
-    shared_ptr<Stream<T>> output;
-    void init();
+    shared_ptr<vector<shared_ptr<Stream<T>>>> outputs;
   
   public:
-    Filter(vector<shared_ptr<Stream<T>>>& inputs);
+    Filter(size_t input_size);
     virtual void calc() = 0;
-    shared_ptr<Stream<T>> getOutStream();
+    shared_ptr<vector<shared_ptr<Stream<T>>>> getOutStreams();
+    vector<shared_ptr<Stream<T>>>& getInStreams();
 };
