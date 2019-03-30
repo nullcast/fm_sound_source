@@ -7,7 +7,6 @@ class Context : public Box<T> {
     vector<shared_ptr<Box<T>>> boxes;
 
   public:
-    Context(vector<shared_ptr<Stream<T>>>& inputs) = delete;
     Context(vector<shared_ptr<Box<T>>>& boxes);
     virtual void calc() = 0;
 };
