@@ -19,11 +19,13 @@ include_directories(
 
 add_executable(
   a.out
-  ${SRC_DIR}/main_context.cpp
+  ${SRC_DIR}/main.cpp
   ${SRC_DIR}/add_filter.cpp
   ${SRC_DIR}/box.cpp
   ${SRC_DIR}/context.cpp
   ${SRC_DIR}/parallel_context.cpp
   ${SRC_DIR}/serial_context.cpp
   ${SRC_DIR}/stream.cpp
+  ${SRC_DIR}/wave_generator.cpp
+  ${SRC_DIR}/sign_wave_generator.cpp
 )
