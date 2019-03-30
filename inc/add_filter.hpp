@@ -1,8 +1,8 @@
 #pragma once
-#include "filter.hpp"
+#include "box.hpp"
 
 template<typename T>
-class AddFilter : public Filter<T> {
+class AddFilter : public Box<T> {
   public:
     AddFilter(vector<shared_ptr<Stream<T>>>& inputs);
     void calc();

@@ -1,5 +1,5 @@
-#include "includes/add_filter.hpp"
-#include "includes/quantization.hpp"
+#include "../inc/add_filter.hpp"
+#include "../inc/quantization.hpp"
 
 int main() {
   vector<shared_ptr<Stream<BIT_8>>> ins(2);
