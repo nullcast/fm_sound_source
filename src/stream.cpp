@@ -1,5 +1,5 @@
-#include "includes/stream.hpp"
-#include "includes/quantization.hpp"
+#include "../inc/stream.hpp"
+#include "../inc/quantization.hpp"
 
 template<typename T>
 Stream<T>::Stream(unsigned long size):buffer(size) {
