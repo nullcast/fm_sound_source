@@ -25,7 +25,7 @@ void Stream<T>::write(T d) {
 
 template<typename T>
 void Stream<T>::print() {
-  for(int i=0; i<size; i++) {
+  for(unsigned long i=0; i<size; i++) {
     cout << (int)buffer[i] << endl;
   }
 }

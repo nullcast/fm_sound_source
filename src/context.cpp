@@ -3,7 +3,7 @@
 
 template<typename T>
 Context<T>::Context(vector<shared_ptr<Box<T>>>& boxes):Box<T>(0, 0), boxes(boxes.size()) {
-  for(int i = 0; i < this->boxes.size(); i++) {
+  for(long unsigned int i = 0; i < this->boxes.size(); i++) {
     this->boxes.at(i) = boxes.at(i);
   }
 }
