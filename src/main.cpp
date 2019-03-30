@@ -1,7 +1,4 @@
-#include "../inc/add_filter.hpp"
 #include "../inc/quantization.hpp"
-#include "../inc/parallel_context.hpp"
-#include "../inc/serial_context.hpp"
 #include "../inc/sign_wave_generator.hpp"
 
 using namespace std;

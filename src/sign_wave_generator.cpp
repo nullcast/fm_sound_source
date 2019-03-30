@@ -8,8 +8,8 @@ SignWaveGenerator<T>::SignWaveGenerator(double sampling_frequency, double sonic_
 template<typename T>
 void SignWaveGenerator<T>::calc() {
   unsigned long current = this->counter % this->division_number;
-  this->counter += 1;
-  char value = 255 * sinl(M_PI / this->division_number * this->counter);
+  this->counter = current + 1;
+  T value = 127 * sinl(2 * M_PI / this->division_number * current);
   this->outputs.at(0)->write(value);
 }
 
