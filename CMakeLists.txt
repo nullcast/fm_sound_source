@@ -23,5 +23,6 @@ add_executable(
   ${SRC_DIR}/box.cpp
   ${SRC_DIR}/stream.cpp
   ${SRC_DIR}/wave_generator.cpp
-  ${SRC_DIR}/sign_wave_generator.cpp
+  ${SRC_DIR}/sin_wave_generator.cpp
+  ${SRC_DIR}/clock.cpp
 )

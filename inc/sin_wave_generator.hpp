@@ -5,8 +5,8 @@
 using namespace std;
 
 template<typename T>
-class SignWaveGenerator : public WaveGenerator<T> {
+class SinWaveGenerator : public WaveGenerator<T> {
   public:
-    SignWaveGenerator(double sampling_frequency, double sonic_frequency);
+    SinWaveGenerator(double sampling_frequency, double sonic_frequency);
     void calc();
 };

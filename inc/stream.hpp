@@ -1,23 +1,21 @@
 #pragma once
 
 #include <vector>
-#include <iostream>
+#include <atomic>
 
 using namespace std;
 
 template<typename T>
 class Stream {
   private:
-    unsigned long size = 0;
-    unsigned long p_first = 0;
-    unsigned long p_end = 0;
+    atomic_ulong p_first = 0;
+    atomic_ulong p_end = 0;
     vector<T> buffer;
 
-    unsigned long updatePtr(unsigned long& p);
+    unsigned long updatePtr(atomic_ulong& p);
 
   public:
     Stream(unsigned long size);
     T read();
     void write(T d);
-    void print();
 };
