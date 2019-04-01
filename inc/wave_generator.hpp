@@ -4,7 +4,8 @@
 template<typename T>
 class WaveGenerator : public Box<T> {
   protected:
-    unsigned long division_number = 0;
+    double division_number = 0;
+    double offset = 0;
     unsigned long counter = 0;
 
   public:
