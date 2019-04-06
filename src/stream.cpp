@@ -10,7 +10,7 @@ unsigned long Stream<T>::updatePtr(atomic_ulong& p) {
   unsigned long current = p.load();
   unsigned long desired;
   do {
-    desired = current % buffer.size();
+    desired = (current + 1) % buffer.size();
   } while(!p.compare_exchange_weak(current, desired));
 
   return current;
@@ -26,7 +26,7 @@ void Stream<T>::write(T d) {
   buffer[updatePtr(p_end)] = d;
 }
 
-template Stream<BIT_8>::Stream(unsigned long size);
-template unsigned long Stream<BIT_8>::updatePtr(atomic_ulong& p);
-template BIT_8 Stream<BIT_8>::read();
-template void Stream<BIT_8>::write(BIT_8 d);
+template Stream<BIT_16>::Stream(unsigned long size);
+template unsigned long Stream<BIT_16>::updatePtr(atomic_ulong& p);
+template BIT_16 Stream<BIT_16>::read();
+template void Stream<BIT_16>::write(BIT_16 d);

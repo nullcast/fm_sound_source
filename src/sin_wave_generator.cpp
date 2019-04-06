@@ -9,12 +9,15 @@ template<typename T>
 void SinWaveGenerator<T>::calc() {
   unsigned long current = this->counter;
   this->counter = current + 1;
+  /*
   if (this->counter >= this->division_number) {
-    this->offset = this->division_number - this->counter;
+    this->offset = this->offset + this->counter - this->division_number;
+    cout << this->offset << endl;
     this->counter = 0;
-  }
-  T value = 127 * sinl(2 * M_PI / this->division_number * (current + this->offset));
+  }*/
+  //T value = 32767 * sinl(2 * M_PI * current / this->division_number + this->offset);
+  T value = 10000 * sinl(2 * M_PI * current / this->division_number + this->offset);
   this->outputs.at(0)->write(value);
 }
 
-template SinWaveGenerator<BIT_8>::SinWaveGenerator(double sampling_frequency, double sonic_frequency);
+template SinWaveGenerator<BIT_16>::SinWaveGenerator(double sampling_frequency, double sonic_frequency);
