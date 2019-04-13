@@ -6,6 +6,7 @@ project(a.out CXX)
 #ディレクトリ設定
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(INC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+set(SAMPLE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/sample)
 
 #コンパイラオプション
 set(CMAKE_CXX_FLAGS "-Wall -O3 -std=c++17 -framework OpenAL")
@@ -19,7 +20,7 @@ include_directories(
 
 add_executable(
   a.out
-  ${SRC_DIR}/main.cpp
+  ${SAMPLE_DIR}/wave_circuit_sample.cpp
   ${SRC_DIR}/box.cpp
   ${SRC_DIR}/add_filter.cpp
   ${SRC_DIR}/context.cpp
