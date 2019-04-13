@@ -1,5 +1,9 @@
+#include <climits>
+
 #include "../inc/sin_wave_generator.hpp"
 #include "../inc/quantization.hpp"
+
+static constexpr double M_2PI = 2 * M_PI;
 
 template<typename T>
 SinWaveGenerator<T>::SinWaveGenerator(double sampling_frequency, double sonic_frequency):WaveGenerator<T>(sampling_frequency, sonic_frequency) {
@@ -7,17 +11,20 @@ SinWaveGenerator<T>::SinWaveGenerator(double sampling_frequency, double sonic_fr
 
 template<typename T>
 void SinWaveGenerator<T>::calc() {
-  unsigned long current = this->counter;
-  this->counter = current + 1;
-  /*
-  if (this->counter >= this->division_number) {
-    this->offset = this->offset + this->counter - this->division_number;
-    cout << this->offset << endl;
+  const double phase = M_2PI * this->counter / this->division_number + this->offset;
+
+  if (this->counter >= LONG_MAX) {
+    unique_ptr<double> _tmp = make_unique<double>(0);
+    this->offset = modf(phase / M_2PI, _tmp.get()) * M_2PI;
     this->counter = 0;
-  }*/
-  //T value = 32767 * sinl(2 * M_PI * current / this->division_number + this->offset);
-  T value = 10000 * sinl(2 * M_PI * current / this->division_number + this->offset);
+    
+    cout << this->counter << endl;
+  }
+
+  const T value = sinl(phase);
   this->outputs.at(0)->write(value);
+
+  this->counter++;
 }
 
 template SinWaveGenerator<float>::SinWaveGenerator(double sampling_frequency, double sonic_frequency);
