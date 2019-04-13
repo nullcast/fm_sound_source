@@ -21,5 +21,5 @@ void SerialContext<T>::calc() {
   }
 }
 
-template SerialContext<BIT_8>::SerialContext(vector<shared_ptr<Box<BIT_8>>>& boxes);
-template void SerialContext<BIT_8>::calc();
+template SerialContext<BIT_16>::SerialContext(vector<shared_ptr<Box<BIT_16>>>& boxes);
+template void SerialContext<BIT_16>::calc();

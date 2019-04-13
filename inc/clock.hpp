@@ -7,7 +7,7 @@ using namespace std;
 class Clock {
   private:
     unsigned long frequency;
-    bool isStarted;
+    bool is_started;
     function<void()> runnable;
     unique_ptr<thread> th;
 

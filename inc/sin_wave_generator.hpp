@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <iostream>
 #include "wave_generator.hpp"
 
 using namespace std;

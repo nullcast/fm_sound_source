@@ -23,5 +23,5 @@ void ParallelContext<T>::calc() {
   }
 }
 
-template ParallelContext<BIT_8>::ParallelContext(vector<shared_ptr<Box<BIT_8>>>& boxes);
-template void ParallelContext<BIT_8>::calc();
+template ParallelContext<BIT_16>::ParallelContext(vector<shared_ptr<Box<BIT_16>>>& boxes);
+template void ParallelContext<BIT_16>::calc();
