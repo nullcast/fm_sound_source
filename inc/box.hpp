@@ -18,4 +18,5 @@ class Box {
     virtual void calc() = 0;
     vector<shared_ptr<Stream<T>>>& getOutStreams();
     vector<shared_ptr<Stream<T>>>& getInStreams();
+    void setInStream(vector<shared_ptr<Stream<T>>>& inputs);
 };
