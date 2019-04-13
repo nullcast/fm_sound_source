@@ -22,6 +22,7 @@ add_executable(
   ${SRC_DIR}/main.cpp
   ${SRC_DIR}/box.cpp
   ${SRC_DIR}/add_filter.cpp
+  ${SRC_DIR}/multiplier_filter.cpp
   ${SRC_DIR}/context.cpp
   ${SRC_DIR}/serial_context.cpp
   ${SRC_DIR}/stream.cpp

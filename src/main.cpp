@@ -6,6 +6,7 @@
 #include "../inc/clock.hpp"
 #include "../inc/device.hpp"
 #include "../inc/add_filter.hpp"
+#include "../inc/multiplier_filter.hpp"
 #include "../inc/serial_context.hpp"
 
 using namespace std;
@@ -13,19 +14,23 @@ using namespace std;
 int main() {
   //波形生成モジュール作成
   auto s1 = make_shared<SinWaveGenerator<float>>(SAMPLINGRATE, 440);
-  auto s2 = make_shared<SinWaveGenerator<float>>(SAMPLINGRATE, 850);
+  auto s2 = make_shared<SinWaveGenerator<float>>(SAMPLINGRATE, 220);
 
   //信号加算フィルタ
   vector<shared_ptr<Stream<float>>> ins(2);
   ins[0] = s1->getOutStreams()[0];
   ins[1] = s2->getOutStreams()[0];
-  auto f = make_shared<AddFilter<float>>(ins);
+  auto f1 = make_shared<AddFilter<float>>(ins);
+
+  //掛け算フィルタ
+  auto f2 = make_shared<MultiplierFilter<float>>(f1->getOutStreams()[0], 10000);
 
   //コンテキストの定義
-  vector<shared_ptr<Box<float>>> boxes(3);
+  vector<shared_ptr<Box<float>>> boxes(4);
   boxes[0] = s1;
   boxes[1] = s2;
-  boxes[2] = f;
+  boxes[2] = f1;
+  boxes[3] = f2;
   SerialContext<float> context(boxes);
 
   //バッファの作成と初期化
