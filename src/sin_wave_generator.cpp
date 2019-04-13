@@ -20,4 +20,6 @@ void SinWaveGenerator<T>::calc() {
   this->outputs.at(0)->write(value);
 }
 
-template SinWaveGenerator<BIT_16>::SinWaveGenerator(double sampling_frequency, double sonic_frequency);
+template SinWaveGenerator<float>::SinWaveGenerator(double sampling_frequency, double sonic_frequency);
+
+template SinWaveGenerator<double>::SinWaveGenerator(double sampling_frequency, double sonic_frequency);

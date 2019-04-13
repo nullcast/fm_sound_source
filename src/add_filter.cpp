@@ -18,5 +18,8 @@ void AddFilter<T>::calc() {
   this->outputs.at(0)->write(ret);
 }
 
-template AddFilter<BIT_16>::AddFilter(vector<shared_ptr<Stream<BIT_16>>>& inputs);
-template void AddFilter<BIT_16>::calc();
+template AddFilter<float>::AddFilter(vector<shared_ptr<Stream<float>>>& inputs);
+template void AddFilter<float>::calc();
+
+template AddFilter<double>::AddFilter(vector<shared_ptr<Stream<double>>>& inputs);
+template void AddFilter<double>::calc();

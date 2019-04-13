@@ -14,6 +14,10 @@ vector<shared_ptr<Stream<T>>>& Box<T>::getInStreams() {
   return this->inputs;
 }
 
-template Box<BIT_16>::Box(size_t inputs_size, size_t output_size);
-template vector<shared_ptr<Stream<BIT_16>>>& Box<BIT_16>::getOutStreams();
-template vector<shared_ptr<Stream<BIT_16>>>& Box<BIT_16>::getInStreams();
+template Box<float>::Box(size_t inputs_size, size_t output_size);
+template vector<shared_ptr<Stream<float>>>& Box<float>::getOutStreams();
+template vector<shared_ptr<Stream<float>>>& Box<float>::getInStreams();
+
+template Box<double>::Box(size_t inputs_size, size_t output_size);
+template vector<shared_ptr<Stream<double>>>& Box<double>::getOutStreams();
+template vector<shared_ptr<Stream<double>>>& Box<double>::getInStreams();

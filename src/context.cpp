@@ -8,4 +8,6 @@ Context<T>::Context(vector<shared_ptr<Box<T>>>& boxes):Box<T>(0, 0), boxes(boxes
   }
 }
 
-template Context<BIT_16>::Context(vector<shared_ptr<Box<BIT_16>>>& boxes);
+template Context<float>::Context(vector<shared_ptr<Box<float>>>& boxes);
+
+template Context<double>::Context(vector<shared_ptr<Box<double>>>& boxes);

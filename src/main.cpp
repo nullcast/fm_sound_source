@@ -12,24 +12,24 @@ using namespace std;
 
 int main() {
   //波形生成モジュール作成
-  shared_ptr<SinWaveGenerator<BIT_16>> s1 = make_shared<SinWaveGenerator<BIT_16>>(SAMPLINGRATE, 440);
-  shared_ptr<SinWaveGenerator<BIT_16>> s2 = make_shared<SinWaveGenerator<BIT_16>>(SAMPLINGRATE, 850);
+  auto s1 = make_shared<SinWaveGenerator<float>>(SAMPLINGRATE, 440);
+  auto s2 = make_shared<SinWaveGenerator<float>>(SAMPLINGRATE, 850);
 
   //信号加算フィルタ
-  vector<shared_ptr<Stream<BIT_16>>> ins(2);
+  vector<shared_ptr<Stream<float>>> ins(2);
   ins[0] = s1->getOutStreams()[0];
   ins[1] = s2->getOutStreams()[0];
-  shared_ptr<AddFilter<BIT_16>> f = make_shared<AddFilter<BIT_16>>(ins);
+  auto f = make_shared<AddFilter<float>>(ins);
 
   //コンテキストの定義
-  vector<shared_ptr<Box<BIT_16>>> boxes(3);
+  vector<shared_ptr<Box<float>>> boxes(3);
   boxes[0] = s1;
   boxes[1] = s2;
   boxes[2] = f;
-  SerialContext<BIT_16> context(boxes);
+  SerialContext<float> context(boxes);
 
   //バッファの作成と初期化
-  shared_ptr<Stream<BIT_16>> buffer = make_shared<Stream<BIT_16>>(SAMPLINGRATE * 5);
+  auto buffer = make_shared<Stream<BIT_16>>(SAMPLINGRATE * 5);
   for(int i = 0; i < SAMPLINGRATE * 5; i++) {
     context.calc();
     buffer->write(context.getOutStreams()[0]->read());
